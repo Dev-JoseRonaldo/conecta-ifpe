@@ -1,5 +1,5 @@
 
-# Project Model Canvas Template para Projetos de Software
+# Project Model Canvas
 
 ## 1. Objetivos e Justificativas
 O projeto consiste no desenvolvimento de um sistema integrado para a gestão financeira do programa de assistência estudantil de alunos do IFPE, com funcionalidades para auxiliar nesse processo provendo análise de aptidão dos alunos inscritos, acompanhamento de pagamentos de bolsas estudantis e notificações automáticas, conectando alunos, setor financeiro e setor de assistência social em um único sistema. A principal funcionalidade será  a integração entre esses três atores em um sistema que possibilita gerenciar algumas etapas estratégicas do fluxo de assistência estudantil e informar, de forma transparente e acessível a todos os atores, o acompanhamento financeiro relacionado à concessão de bolsas estudantis.

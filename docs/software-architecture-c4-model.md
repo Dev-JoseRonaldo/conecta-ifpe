@@ -3,16 +3,6 @@
 ## Visão Geral
 Este documento descreve a arquitetura de software do sistema ```Conecta IFPE``` utilizando o C4 Model. A arquitetura é apresentada em quatro níveis: Contexto, Contêiner, Componente e Código.
 
----
-_**Instruções de Uso:**_
-
-- _**Contexto**: Adicione uma visão geral de como o sistema interage com os usuários e sistemas externos._
-- _**Contêiners**: Detalhe as principais partes do sistema, como a aplicação web, banco de dados, etc._
-- _**Componentes**: Descreva a estrutura interna dos contêiners, detalhando os módulos e serviços principais._
-- _**Código (Opcional)**: Use este nível para detalhar classes ou módulos críticos se necessário._
-- _**Decisões Arquiteturais**: Documente as decisões tomadas e suas justificativas._
----
-
 ## 1. Diagrama de Contexto
 
 ### 1.1. Descrição do Diagrama de Contexto
@@ -44,8 +34,8 @@ O diagrama de contêiner mostra os principais contêiners de software que compõ
 
 #### 2.3.1.
 - **[Sistema Conecta IFPE]:** Descrição do contêiner, sua responsabilidade e tecnologias utilizadas.
-  - **Tecnologias:** [Ex: Spring Boot, MySQL, etc.]
-  - **Responsabilidade:** [Função principal do contêiner]
+  - **Tecnologias:** Nest.js, typescript, docker, postgresSQL, prismaORM, OAuth2.
+  - **Responsabilidade:** Sistema principal; autenticao; perfis funcionais; transacoes do aluno; geracao, gerenciamento e envio de lista de pagamento de bolsa (assistente social); envio do extrato de pagamento (Setor financeiro)
   - **Interações:** [IFPE - Notificações, Conecta IFPE - Ranqueamento]
 
 ---
@@ -203,5 +193,5 @@ Indique quaisquer melhorias futuras ou áreas a serem exploradas para a evoluç�
 
 ---
 
-**Autores:** [Luiz Henrique Brito Almeida da Silva, José Ronaldo de Souza Silva, Vitória Beatriz Alexandre Silva, Karen Vasconcelo Verçosa, Cauê Marinho]  
+**Autores:** [Luiz Henrique Brito Almeida da Silva, José Ronaldo de Souza Silva, Vitória Beatriz Alexandre Silva, Karen Vasconcelos Verçosa, Cauê Marinho]  
 **Data:** [09/09/2024]

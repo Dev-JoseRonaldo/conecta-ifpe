@@ -19,22 +19,52 @@ Com base nisso, o projeto visa resolvê-los por meio de uma solução que aprese
 
 Com essa abordagem, o projeto se alinha na melhora da experiência dos alunos que necessitam das bolsas e também na eficiência administrativa.
 
-
 ## Início Rápido
 
-**(EM BREVE)**
+Para iniciar o projeto, siga estes passos:
+
+1. Faça um fork e clone o repositório:
+
+```bash
+git clone https://github.com/Dev-JoseRonaldo/conecta-ifpe.git
+```
+
+2. Instale as dependências:
+
+```bash
+yarn install --frozen-lockfile
+```
+
+3. Execute o servidor de desenvolvimento:
+
+```bash
+yarn dev
+```
+
+4. Acesse [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+
+5. Este projeto usa um git hook para garantir [conventional commits](https://github.com/qoomon/git-conventional-commits). Para instalar o git hook, execute o seguinte comando no diretório raiz do projeto:
+
+```sh
+brew install pre-commit
+pre-commit install -t commit-msg
+```
 
 ### Pré-requisitos
 
-**(EM BREVE)**
+Para rodar o projeto você precisará dos seguintes pré-requisitos de instalação:
 
-### Instalação
+1. **Node.js**: Certifique-se de ter a [versão mais recente do Node.js](https://nodejs.org/) instalada, preferencialmente LTS, pois muitas dessas ferramentas dependem do ambiente Node.js para funcionar.
 
-**(EM BREVE)**
+2. **NPM ou Yarn**: Gerenciadores de pacotes como [NPM](https://www.npmjs.com/) (vem com o Node.js) ou [Yarn](https://yarnpkg.com/) são necessários para instalar as dependências do projeto.
+
+3. **Git**: Para gerenciar o controle de versão, clonar repositórios e utilizar GitHub Actions, é necessário ter o [Git](https://git-scm.com/) instalado.
+
+4. **Docker (opcional, mas recomendado)**: Se você for usar Kubernetes, o [Docker](https://www.docker.com/) será útil para criar e gerenciar contêineres durante o desenvolvimento e teste.
 
 ## Documentação
 
-**(EM BREVE)**
+Toda a documentação necessária para o projeto, incluindo guias de instalação, configuração, e uso das ferramentas, pode ser encontrada na pasta [docs](/docs/) localizada na raiz do projeto. Certifique-se de revisar esses documentos para obter orientações detalhadas sobre o desenvolvimento e manutenção do projeto.
 
 ## Como Contribuir
 
@@ -60,6 +90,6 @@ Este projeto está em desenvolvimento ativo. Você pode esperar mudanças freque
 ## 💼 Créditos
 <br>
 
-| [<img src="https://github.com/luiz-linkezio.png" width=115><br><sub>Luiz Henrique</sub><br>](https://github.com/luiz-linkezio) <sub>Desenvolvedor</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/luiz-henrique-brito-4065761b0/)</sub><br> | [<img src="https://github.com/dev-joseronaldo.png" width=115><br><sub>José Ronaldo</sub><br>](https://github.com/Dev-JoseRonaldo) <sub>Desenvolvedor</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/josé-ronaldo-973a26236)</sub><br> | [<img src="https://github.com/Cawezinn.png" width=115><br><sub>Cauê Marinho</sub><br>](https://github.com/Cawezinn) <sub>Desenvolvedor</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/cau%C3%AAsouza/)</sub><br> | [<img src="https://github.com/mbmartns.png" width=115><br><sub>Maria Beatriz</sub><br>](https://github.com/mbmartns) <sub>Desenvolvedora</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/maria-beatriz-martins-2052882b2/)</sub><br> | [<img src="https://github.com/karenvcsa.png" width=115><br><sub>Karen Verçosa</sub><br>](https://github.com/karenvcsa) <sub>Desenvolvedora</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/karenvcsa/)</sub><br> | [<img src="https://github.com/vitoriabtriz.png" width=115><br><sub>Vitória Beatriz</sub><br>](https://github.com/vitoriabtriz) <sub>Desenvolvedora</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/vitoriabtriz/)</sub><br> |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://github.com/luiz-linkezio.png" width=115><br><sub>Luiz Henrique</sub><br>](https://github.com/luiz-linkezio) <sub>AI Engineer / Pentester</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/luiz-henrique-brito-4065761b0/)</sub><br> | [<img src="https://github.com/dev-joseronaldo.png" width=115><br><sub>José Ronaldo</sub><br>](https://github.com/Dev-JoseRonaldo) <sub>FullStack Developer</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/josé-ronaldo-973a26236)</sub><br> | [<img src="https://github.com/Cawezinn.png" width=115><br><sub>Cauê Marinho</sub><br>](https://github.com/Cawezinn) <sub>Backend Developer</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/cau%C3%AAsouza/)</sub><br> | [<img src="https://github.com/karenvcsa.png" width=115><br><sub>Karen Verçosa</sub><br>](https://github.com/karenvcsa) <sub>UI/UX Design</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/karenvcsa/)</sub><br> | [<img src="https://github.com/vitoriabtriz.png" width=115><br><sub>Vitória Beatriz</sub><br>](https://github.com/vitoriabtriz) <sub>UI/UX Design</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/vitoriabtriz/)</sub><br> |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 ---

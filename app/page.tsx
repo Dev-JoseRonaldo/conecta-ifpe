@@ -1,11 +1,10 @@
 import { Metadata } from "next"
 import Head from "next/head"
 
-
 export const metadata: Metadata = {
   title: "Conecta IFPE",
   icons: "/favicon.ico",
-  
+
   twitter: {
     card: "summary_large_image",
   },
@@ -20,9 +19,6 @@ export const metadata: Metadata = {
     ],
   },
 }
-
-
-
 
 export default function Web() {
   return (

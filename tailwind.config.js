@@ -18,21 +18,26 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed7",
-          800: "#1e40af",
-          900: "#1e3a8a",
+          light: "#79EB8B",
+          medium: "#2F9E41",
+          dark: "#00420C",
+        },
+        gray: {
+          200: "#D4DFD6",
+          300: "#B7C7B9",
+          400: "#3C4D3F",
+          500: "#3C4D3F",
+          700: "#2E332F",
+        },
+        feedback: {
+          success: "#3FD961",
+          alert: "#D4DB3F",
+          error: "#BA2525",
         },
       },
       fontFamily: {
         body: [
-          "Inter",
+          "Poppins",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -49,6 +54,7 @@ module.exports = {
           "Noto Color Emoji",
         ],
         sans: [
+          "Poppins",
           "Inter",
           "ui-sans-serif",
           "system-ui",
@@ -65,6 +71,22 @@ module.exports = {
           "Segoe UI Symbol",
           "Noto Color Emoji",
         ],
+      },
+      fontSize: {
+        xs: ["0.75rem", { lineHeight: "1rem" }],
+        sm: ["0.875rem", { lineHeight: "1.25rem" }],
+        base: ["1rem", { lineHeight: "1.5rem" }],
+        lg: ["1.125rem", { lineHeight: "1.75rem" }],
+        xl: ["1.25rem", { lineHeight: "1.75rem" }],
+        "2xl": ["1.5rem", { lineHeight: "2rem" }],
+        "3xl": ["1.75rem", { lineHeight: "2rem" }],
+        "4xl": ["2rem", { lineHeight: "2.25rem" }],
+        "5xl": ["2.5rem", { lineHeight: "2.5rem" }],
+        "6xl": ["3rem", { lineHeight: "1" }],
+        "7xl": ["3.5rem", { lineHeight: "1" }],
+        "8xl": ["4.5rem", { lineHeight: "1" }],
+        "9xl": ["6rem", { lineHeight: "1" }],
+        "10xl": ["8rem", { lineHeight: "1" }],
       },
       borderWidth: {
         DEFAULT: "1px",

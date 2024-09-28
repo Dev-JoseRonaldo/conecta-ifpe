@@ -24,7 +24,7 @@ export default function Web() {
   return (
     <>
       <Head>
-        <title>Conecta IFP</title>
+        <title>Conecta IFPE</title>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
 

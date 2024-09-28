@@ -9,7 +9,7 @@ export interface TabItemProps {
   iconSize?: number
 }
 
-interface TabItemComponentProps extends TabItemProps {
+export interface TabItemComponentProps extends TabItemProps {
   isCollapsed: boolean
 }
 

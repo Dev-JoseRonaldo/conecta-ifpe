@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 import { render, screen } from "@testing-library/react"
@@ -5,8 +6,9 @@ import Logo from "."
 
 // Mock do componente Image
 jest.mock("next/image", () => {
-  return function MockImage(props: { src: string; alt: string; width: number; height: number }) {
-    return <img {...props} />
+  return function MockImage(props: { src: string; alt: string; width?: number; height?: number; priority?: boolean }) {
+    const { priority, ...restProps } = props
+    return <img {...restProps} />
   }
 })
 

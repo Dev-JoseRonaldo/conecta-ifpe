@@ -53,7 +53,7 @@ const FileUpload = ({ onFileUpload }: FileUploadProps) => {
   }
 
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full max-w-60 flex-col gap-8">
       <div
         className={`max-w-60 rounded-md border-2 border-gray-300 p-6 text-center transition-colors duration-100 ${
           isDragging ? "border-primary-medium/50 bg-primary-medium/50 text-black" : "border-dashed bg-white"
@@ -73,7 +73,7 @@ const FileUpload = ({ onFileUpload }: FileUploadProps) => {
         </label>
       </div>
       {progress > 0 && (
-        <div className="flex max-w-60 flex-1 flex-col items-center">
+        <div className="flex flex-1 flex-col items-center">
           <div
             className={`${
               progress < 100 ? "opacity-75" : ""

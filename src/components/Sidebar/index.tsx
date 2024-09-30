@@ -20,7 +20,7 @@ export const Sidebar = ({ tabs = [], isCollapsed }: SidebarProps) => {
         className={isCollapsed ? "mb-8 py-4" : ""}
       />
 
-      <nav className="flex-1 space-y-2 p-4">
+      <nav className="w-full flex-1 space-y-2 p-4">
         {tabs.length > 0
           ? tabs.map((tab, idx) => (
               <TabItem

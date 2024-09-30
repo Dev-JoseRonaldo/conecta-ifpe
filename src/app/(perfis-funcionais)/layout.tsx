@@ -70,16 +70,32 @@ function getTabsForProfile(profile: string) {
   ]
 
   const TabsAluno: TabItemProps[] = [
-    { name: "Dashboard", route: "/aluno/dashboard", IconComponent: HiOutlineEnvelope },
+    { name: "Dashboard", route: "/aluno", IconComponent: HiOutlineEnvelope },
     { name: "Gestão de Usuários", route: "/aluno/usuarios", IconComponent: HiOutlineEnvelope },
     { name: "Configurações", route: "/aluno/configuracoes", IconComponent: HiOutlineEnvelope },
   ]
+
+  const TabsFinanceiro: TabItemProps[] = [
+    { name: "Dashboard", route: "/financeiro", IconComponent: HiOutlineEnvelope },
+    { name: "Gestão de Usuários", route: "/financeiro/usuarios", IconComponent: HiOutlineEnvelope },
+    { name: "Configurações", route: "/financeiro/configuracoes", IconComponent: HiOutlineEnvelope },
+  ]
+
+  const TabsAdmin: TabItemProps[] = [{ name: "Início", route: "/admin", IconComponent: HiOutlineEnvelope }]
+
+  const TabsConvidado: TabItemProps[] = [{ name: "Início", route: "/convidado", IconComponent: HiOutlineEnvelope }]
 
   switch (profile) {
     case "Assistente Social":
       return TabsAssistenteSocial
     case "Aluno":
       return TabsAluno
+    case "Financeiro":
+      return TabsFinanceiro
+    case "Convidado":
+      return TabsConvidado
+    case "Admin":
+      return TabsAdmin
 
     default:
       return []

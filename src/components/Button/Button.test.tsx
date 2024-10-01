@@ -19,8 +19,8 @@ describe("Button component", () => {
   test("renders with the correct color class for red", () => {
     render(<Button text="Delete" color="red" />)
     const buttonElement = screen.getByRole("button")
-    expect(buttonElement).toHaveClass("bg-feedback-error/75")
-    expect(buttonElement).toHaveClass("hover:bg-feedback-error")
+    expect(buttonElement).toHaveClass("bg-feedback-error")
+    expect(buttonElement).toHaveClass("hover:bg-red-900")
   })
 
   test("renders with an icon if provided", () => {

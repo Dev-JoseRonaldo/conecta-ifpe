@@ -9,13 +9,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ text, color, icon, className, size = "full", ...props }: ButtonProps) => {
   const colorClass =
-    color === "green" ? "bg-primary-medium hover:bg-primary-dark" : "bg-feedback-error/75 hover:bg-feedback-error"
+    color === "green" ? "bg-primary-medium hover:bg-primary-dark" : "bg-feedback-error hover:bg-red-900"
 
   return (
     <button
       className={`${colorClass} flex ${
         size === "full" ? "w-full" : "px-3"
-      } items-center justify-center space-x-2 rounded-lg py-[12px] text-white transition-colors duration-200 ${className}`}
+      } cursor-pointer items-center justify-center space-x-2 rounded-lg py-[12px] text-white transition-colors duration-200 ${className}`}
       {...props}
     >
       <div className="flex items-center justify-center gap-3">

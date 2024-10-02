@@ -7,11 +7,13 @@ type AlunoData = {
 type TableProps = {
   alunos: AlunoData[]
   colunasOmitidas?: string[]
+  IdentifierColumn: string
+  type?: "Lista de pagamento" | "Analise de inscriçoes"
 }
 
-const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas }) => {
+const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas, type = "Analise de inscriçoes", IdentifierColumn }) => {
   const [statusAlunos, setStatusAlunos] = useState<{ [key: string]: string }>(
-    alunos.reduce((acc, aluno) => ({ ...acc, [aluno["Data de criação"]]: "" }), {})
+    alunos.reduce((acc, aluno) => ({ ...acc, [aluno[IdentifierColumn]]: "" }), {})
   )
 
   const [ordem, setOrdem] = useState<{
@@ -22,10 +24,19 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas }) => {
     direcao: "asc",
   })
 
+  const [activeCheckboxes, setActiveCheckboxes] = useState<{ [key: string]: boolean }>({})
+
   const handleStatusChange = (dataCriacao: string, novoStatus: string) => {
     setStatusAlunos((prev) => ({
       ...prev,
       [dataCriacao]: novoStatus,
+    }))
+  }
+
+  const handleCheckboxChange = (dataCriacao: string) => {
+    setActiveCheckboxes((prev) => ({
+      ...prev,
+      [dataCriacao]: !prev[dataCriacao],
     }))
   }
 
@@ -98,23 +109,36 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas }) => {
       <tbody>
         {sortedAlunos.map((aluno, idx) => (
           <tr key={idx} className="border-t text-center">
-            <td className="whitespace-nowrap p-8">
-              <select
-                value={statusAlunos[aluno["Data de criação"]]}
-                onChange={(e) => handleStatusChange(aluno["Data de criação"], e.target.value)}
-                className={`appearance-none rounded-lg border border-gray-300 p-2 text-gray-700 shadow-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  statusAlunos[aluno["Data de criação"]] === "Contemplado"
-                    ? "bg-primary-medium text-white"
-                    : statusAlunos[aluno["Data de criação"]] === "Não Contemplado"
-                    ? "bg-feedback-error text-white"
-                    : "bg-white"
-                }`}
-              >
-                <option value="">Selecione uma opção</option>
-                <option value="Contemplado">Contemplado</option>
-                <option value="Não Contemplado">Não Contemplado</option>
-              </select>
-            </td>
+            {type === "Lista de pagamento" ? (
+              <td className="whitespace-nowrap p-8">
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={activeCheckboxes[aluno[IdentifierColumn]] || false}
+                    onChange={() => handleCheckboxChange(aluno[IdentifierColumn])}
+                    className="form-checkbox size-5 cursor-pointer rounded border-gray-300 text-green-500 accent-feedback-success focus:ring-green-500"
+                  />
+                </label>
+              </td>
+            ) : (
+              <td className="whitespace-nowrap p-8">
+                <select
+                  value={statusAlunos[aluno[IdentifierColumn]]}
+                  onChange={(e) => handleStatusChange(aluno[IdentifierColumn], e.target.value)}
+                  className={`appearance-none rounded-lg border border-gray-300 p-2 text-gray-700 shadow-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    statusAlunos[aluno[IdentifierColumn]] === "Contemplado"
+                      ? "bg-primary-medium text-white"
+                      : statusAlunos[aluno[IdentifierColumn]] === "Não Contemplado"
+                      ? "bg-feedback-error text-white"
+                      : "bg-white"
+                  }`}
+                >
+                  <option value="">Selecione uma opção</option>
+                  <option value="Contemplado">Contemplado</option>
+                  <option value="Não Contemplado">Não Contemplado</option>
+                </select>
+              </td>
+            )}
             {colunas.map((coluna) => (
               <td
                 key={coluna}

@@ -40,7 +40,11 @@ describe("Table Component", () => {
       throw new Error("Select not found")
     }
 
-    fireEvent.change(select, { target: { value: "Contemplado" } })
+    if (select) {
+      fireEvent.change(select, { target: { value: "Contemplado" } })
+    } else {
+      throw new Error("Select not found")
+    }
 
     expect(select).toHaveValue("Contemplado")
   })
@@ -57,5 +61,26 @@ describe("Table Component", () => {
 
     expect(screen.queryByText("Nome")).not.toBeInTheDocument()
     expect(screen.getByText("Nota")).toBeInTheDocument()
+  })
+
+  test("should show correct background color based on status", () => {
+    render(<Table alunos={alunosMock} />)
+
+    const select = screen.getAllByRole("combobox")[0]
+
+    if (select) {
+      fireEvent.change(select, { target: { value: "Contemplado" } })
+    } else {
+      throw new Error("Select not found")
+    }
+
+    expect(select).toHaveClass("bg-primary-medium")
+
+    if (select) {
+      fireEvent.change(select, { target: { value: "Não Contemplado" } })
+    } else {
+      throw new Error("Select not found")
+    }
+    expect(select).toHaveClass("bg-feedback-error")
   })
 })

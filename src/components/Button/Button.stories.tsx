@@ -14,7 +14,7 @@ const meta: Meta<typeof Button> = {
   },
   argTypes: {
     color: {
-      control: { type: "select", options: ["green", "red"] },
+      control: { type: "select", options: ["green", "red", "white"] },
     },
     icon: {
       control: { type: "select", options: [undefined, <FaBeer />] },
@@ -48,6 +48,10 @@ export const GreenButton: Story = {
 
 export const RedButton: Story = {
   render: (args) => <Button {...args} text="Red Button" color="red" />,
+}
+
+export const WhiteButton: Story = {
+  render: (args) => <Button {...args} text="White Button" color="white" />,
 }
 
 export const ButtonWithIcon: Story = {

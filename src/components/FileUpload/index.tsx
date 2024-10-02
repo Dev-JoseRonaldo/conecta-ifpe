@@ -89,21 +89,23 @@ const FileUpload = ({ onFileUpload }: FileUploadProps) => {
     <>
       {responseData ? (
         <>
+          <h1 className="mb-6 self-start text-2xl font-bold">Selecione os alunos que serão contemplados:</h1>
           <div className="mt-4 max-h-screen max-w-screen-xl overflow-scroll">
-            <h1 className="mb-6 text-2xl font-bold">Selecione os alunos que serão contemplados:</h1>
             <Table alunos={responseData} colunasOmitidas={["created at", "process"]} />
           </div>
-          <Button
-            text="Criar lista de pagamento"
-            color="green"
-            size="content"
-            onClick={handleGenerateList}
-            disabled={!selectedFile || progress < 100}
-            className="px-4"
-          />
+          <div className="flex w-full max-w-xl items-center justify-center gap-10">
+            <Button text="Salvar Rascunho" color="white" size="full" onClick={() => setResponseData(null)} />
+            <Button
+              text="Criar lista de pagamento"
+              color="green"
+              size="full"
+              onClick={handleGenerateList}
+              disabled={!selectedFile || progress < 100}
+            />
+          </div>
         </>
       ) : (
-        <>
+        <div className="flex flex-col items-center justify-center gap-8">
           <h2 className="text-lg font-bold">Carregue seu arquivo</h2>
           <div className="flex w-full max-w-60 flex-col gap-8">
             <div
@@ -154,7 +156,7 @@ const FileUpload = ({ onFileUpload }: FileUploadProps) => {
               }`}
             />
           </div>
-        </>
+        </div>
       )}
     </>
   )

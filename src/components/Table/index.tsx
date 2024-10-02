@@ -1,5 +1,4 @@
-import React from "react"
-import { useState } from "react"
+import React, { useState } from "react"
 
 type AlunoData = {
   [key: string]: any
@@ -15,6 +14,14 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas }) => {
     alunos.reduce((acc, aluno) => ({ ...acc, [aluno["Data de criação"]]: "" }), {})
   )
 
+  const [ordem, setOrdem] = useState<{
+    coluna: string | null
+    direcao: "asc" | "desc"
+  }>({
+    coluna: null,
+    direcao: "asc",
+  })
+
   const handleStatusChange = (dataCriacao: string, novoStatus: string) => {
     setStatusAlunos((prev) => ({
       ...prev,
@@ -23,7 +30,9 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas }) => {
   }
 
   const colunas =
-    alunos.length > 0 ? Object.keys(alunos[0] || {}).filter((coluna) => !colunasOmitidas?.includes(coluna)) : []
+    alunos.length > 0
+      ? Object.keys(alunos[0] as Record<string, unknown>).filter((coluna) => !colunasOmitidas?.includes(coluna))
+      : []
 
   const formatValue = (value: any) => {
     try {
@@ -50,20 +59,44 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas }) => {
     }
   }
 
+  const getBallColor = (value: string) => {
+    const percent = parseFloat(value)
+    if (percent >= 0.75) return "bg-feedback-success"
+    if (percent >= 0.25) return "bg-feedback-alert"
+    return "bg-feedback-error"
+  }
+
+  const handleSort = (coluna: string) => {
+    const direcao = ordem.coluna === coluna && ordem.direcao === "asc" ? "desc" : "asc"
+    setOrdem({ coluna, direcao })
+  }
+
+  const sortedAlunos = [...alunos].sort((a, b) => {
+    if (ordem.coluna) {
+      const valorA = a[ordem.coluna]
+      const valorB = b[ordem.coluna]
+
+      if (valorA < valorB) return ordem.direcao === "asc" ? -1 : 1
+      if (valorA > valorB) return ordem.direcao === "asc" ? 1 : -1
+      return 0
+    }
+    return 0
+  })
+
   return (
     <table className="table-auto border-collapse border-t border-gray-200 bg-white">
       <thead className="whitespace-nowrap text-[#718096]">
         <tr>
           <th className="p-8 font-normal">Condição</th>
           {colunas.map((coluna) => (
-            <th key={coluna} className="p-8 font-normal">
-              {coluna}
+            <th key={coluna} className="cursor-pointer p-8 font-normal" onClick={() => handleSort(coluna)}>
+              {coluna} {ordem.coluna === coluna ? (ordem.direcao === "asc" ? "↑" : "↓") : ""}
             </th>
           ))}
         </tr>
       </thead>
       <tbody>
-        {alunos.map((aluno, idx) => (
+        {sortedAlunos.map((aluno, idx) => (
           <tr key={idx} className="border-t text-center">
             <td className="whitespace-nowrap p-8">
               <select
@@ -87,7 +120,14 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas }) => {
                 key={coluna}
                 className={`items p-8 ${(aluno[coluna]?.toString()).length > 80 ? "max-w-16 truncate" : ""}`}
               >
-                {formatValue(aluno[coluna])}
+                {coluna === "Nível de necessidade" ? (
+                  <div className="flex items-center">
+                    <span className={`mr-2 size-4 rounded-full ${getBallColor(aluno[coluna])}`}></span>
+                    {formatValue(aluno[coluna])}
+                  </div>
+                ) : (
+                  formatValue(aluno[coluna])
+                )}
               </td>
             ))}
           </tr>

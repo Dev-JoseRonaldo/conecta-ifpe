@@ -27,12 +27,9 @@ export default function InscriptionsAssistenteSocialPage() {
 
   return (
     <RootLayout userRole={userRole}>
-      <div className="flex h-screen items-center justify-center">
-        <div className="rounded-lg bg-white p-8 px-36 shadow-md">
-          <div className="flex flex-col items-center space-y-4">
-            <h2 className="text-lg font-bold">Carregue seu arquivo</h2>
-            <FileUpload onFileUpload={handleFileUpload} />
-          </div>
+      <div className="rounded-lg bg-white p-8 px-36 shadow-md">
+        <div className="flex flex-col items-center space-y-4">
+          <FileUpload onFileUpload={handleFileUpload} />
         </div>
       </div>
     </RootLayout>

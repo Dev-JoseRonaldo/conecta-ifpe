@@ -46,10 +46,9 @@ export default function RootLayout({ children, userRole }: LayoutProps) {
     <html lang="pt-BR">
       <body className={`md: flex min-h-screen`}>
         <Sidebar tabs={tabs} isCollapsed={isSidebarCollapsed} />
-
         <div className="flex-1">
           <Header title="Olá, Ronaldo!" userRole={userRole} />
-          <main className="bg-[#F5F5F5] p-4">{children}</main>
+          <main className="flex h-full flex-1 flex-col items-center justify-center bg-[#F5F5F5] p-4">{children}</main>
         </div>
       </body>
     </html>

@@ -1,11 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react"
+import mockData from "./smallMock.json" // Importando o mock de dados
 import FileUpload from "."
 
 const meta: Meta<typeof FileUpload> = {
   title: "FileUpload",
   component: FileUpload,
   args: {
-    onFileUpload: (file: File) => console.log(file.name),
+    onFileUpload: (file: File) => {
+      console.log("Arquivo carregado:", file.name)
+    },
   },
   argTypes: {
     onFileUpload: {
@@ -27,8 +30,10 @@ export const Default: Story = {
 
 export const UploadExample: Story = {
   render: (args) => {
-    const handleFileUpload = (file: File) => {
-      console.log("Uploaded file:", file.name)
+    const handleFileUpload = async (file: File) => {
+      console.log("Arquivo carregado:", file.name)
+      const simulatedResponse = { data: mockData }
+      console.log("Resposta simulada:", simulatedResponse.data)
     }
 
     return <FileUpload {...args} onFileUpload={handleFileUpload} />

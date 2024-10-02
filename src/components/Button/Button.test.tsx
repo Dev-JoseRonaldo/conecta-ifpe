@@ -13,7 +13,7 @@ describe("Button component", () => {
     render(<Button text="Click Me" color="green" />)
     const buttonElement = screen.getByRole("button")
     expect(buttonElement).toHaveClass("bg-primary-medium")
-    expect(buttonElement).toHaveClass("hover:bg-primary-dark")
+    expect(buttonElement).toHaveClass("hover:bg-green-800")
   })
 
   test("renders with the correct color class for red", () => {
@@ -21,6 +21,15 @@ describe("Button component", () => {
     const buttonElement = screen.getByRole("button")
     expect(buttonElement).toHaveClass("bg-feedback-error")
     expect(buttonElement).toHaveClass("hover:bg-red-900")
+  })
+
+  test("renders with the correct color class for white", () => {
+    render(<Button text="Submit" color="white" />)
+    const buttonElement = screen.getByRole("button")
+    expect(buttonElement).toHaveClass("bg-white")
+    expect(buttonElement).toHaveClass("hover:bg-green-800")
+    expect(buttonElement).toHaveClass("text-primary-medium")
+    expect(buttonElement).toHaveClass("border-primary-medium")
   })
 
   test("renders with an icon if provided", () => {

@@ -45,7 +45,7 @@ export default function AnalysisAssistenteSocialPage() {
           <div className="max-h-dvh overflow-scroll">
             <Table
               type="Lista de pagamento"
-              IdentifierColun="CPF"
+              IdentifierColumn="CPF"
               alunos={responseData}
               colunasOmitidas={["created at", "process"]}
             />

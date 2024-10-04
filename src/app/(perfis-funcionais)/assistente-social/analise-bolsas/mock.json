@@ -6,7 +6,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "1234",
     "Conta Corrente": "56789-0",
-    "Percentual de Presença": 95.0
+    "Percentual de Presença": 0.95
   },
   {
     "Ordem": 2,
@@ -15,7 +15,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "5678",
     "Conta Corrente": "12345-6",
-    "Percentual de Presença": 89.5
+    "Percentual de Presença": 0.895
   },
   {
     "Ordem": 3,
@@ -24,7 +24,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "9101",
     "Conta Corrente": "23456-7",
-    "Percentual de Presença": 92.3
+    "Percentual de Presença": 0.923
   },
   {
     "Ordem": 4,
@@ -33,7 +33,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "1213",
     "Conta Corrente": "34567-8",
-    "Percentual de Presença": 88.0
+    "Percentual de Presença": 0.88
   },
   {
     "Ordem": 5,
@@ -42,7 +42,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "1415",
     "Conta Corrente": "45678-9",
-    "Percentual de Presença": 91.2
+    "Percentual de Presença": 0.912
   },
   {
     "Ordem": 6,
@@ -51,7 +51,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "1617",
     "Conta Corrente": "56789-0",
-    "Percentual de Presença": 85.5
+    "Percentual de Presença": 0.855
   },
   {
     "Ordem": 7,
@@ -60,7 +60,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "1819",
     "Conta Corrente": "67890-1",
-    "Percentual de Presença": 94.7
+    "Percentual de Presença": 0.947
   },
   {
     "Ordem": 8,
@@ -69,7 +69,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "2021",
     "Conta Corrente": "78901-2",
-    "Percentual de Presença": 87.0
+    "Percentual de Presença": 0.870
   },
   {
     "Ordem": 9,
@@ -78,7 +78,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "2223",
     "Conta Corrente": "89012-3",
-    "Percentual de Presença": 90.4
+    "Percentual de Presença": 0.904
   },
   {
     "Ordem": 10,
@@ -87,7 +87,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "2425",
     "Conta Corrente": "90123-4",
-    "Percentual de Presença": 93.1
+    "Percentual de Presença": 0.931
   },
   {
     "Ordem": 11,
@@ -96,7 +96,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "2627",
     "Conta Corrente": "01234-5",
-    "Percentual de Presença": 88.5
+    "Percentual de Presença": 0.885
   },
   {
     "Ordem": 12,
@@ -105,7 +105,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "2829",
     "Conta Corrente": "12345-6",
-    "Percentual de Presença": 91.9
+    "Percentual de Presença": 0.919
   },
   {
     "Ordem": 13,
@@ -114,7 +114,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "3031",
     "Conta Corrente": "23456-7",
-    "Percentual de Presença": 89.8
+    "Percentual de Presença": 0.898
   },
   {
     "Ordem": 14,
@@ -123,7 +123,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "3233",
     "Conta Corrente": "34567-8",
-    "Percentual de Presença": 92.1
+    "Percentual de Presença": 0.921
   },
   {
     "Ordem": 15,
@@ -132,7 +132,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "3435",
     "Conta Corrente": "45678-9",
-    "Percentual de Presença": 86.6
+    "Percentual de Presença": 0.866
   },
   {
     "Ordem": 16,
@@ -141,7 +141,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "3637",
     "Conta Corrente": "56789-0",
-    "Percentual de Presença": 93.7
+    "Percentual de Presença": 0.937
   },
   {
     "Ordem": 17,
@@ -150,7 +150,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "3839",
     "Conta Corrente": "67890-1",
-    "Percentual de Presença": 90.0
+    "Percentual de Presença": 0.9
   },
   {
     "Ordem": 18,
@@ -159,7 +159,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "4041",
     "Conta Corrente": "78901-2",
-    "Percentual de Presença": 91.5
+    "Percentual de Presença": 0.915
   },
   {
     "Ordem": 19,
@@ -168,7 +168,7 @@
     "Banco": "Banco do Brasil",
     "Agencia": "4243",
     "Conta Corrente": "89012-3",
-    "Percentual de Presença": 88.9
+    "Percentual de Presença": 0.889
   },
   {
     "Ordem": 20,
@@ -177,6 +177,6 @@
     "Banco": "Banco do Brasil",
     "Agencia": "4445",
     "Conta Corrente": "90123-4",
-    "Percentual de Presença": 92.8
+    "Percentual de Presença": 0.928
   }
 ]

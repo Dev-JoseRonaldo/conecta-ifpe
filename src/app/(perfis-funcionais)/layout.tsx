@@ -9,6 +9,7 @@ import { MdPaid } from "react-icons/md"
 import { RiSettings3Fill } from "react-icons/ri"
 
 import { Header } from "src/components/Header"
+import LoadingSpinner from "src/components/LoadingSpinner"
 import { Sidebar } from "src/components/Sidebar"
 import { TabItemProps } from "src/components/TabItem"
 
@@ -19,6 +20,7 @@ interface LayoutProps {
 
 export default function RootLayout({ children, userRole }: LayoutProps) {
   const [isSidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   const tabs = getTabsForProfile(userRole)
 
@@ -42,13 +44,26 @@ export default function RootLayout({ children, userRole }: LayoutProps) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  useEffect(() => {
+    // Define que o layout foi montado após o primeiro render
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) {
+    return <LoadingSpinner /> // Exibe o componente de loading
+  }
+
   return (
     <html lang="pt-BR">
-      <body className={`md: flex min-h-screen`}>
+      <body className={`min-h-screen md:flex`}>
         <Sidebar tabs={tabs} isCollapsed={isSidebarCollapsed} />
         <div className="flex-1">
           <Header title="Olá, Ronaldo!" userRole={userRole} />
-          <main className="flex h-full flex-1 flex-col items-center justify-center bg-[#F5F5F5] p-4">{children}</main>
+          {isMounted ? (
+            <main className="flex h-full flex-1 flex-col items-center justify-center bg-[#F5F5F5] p-4">{children}</main>
+          ) : (
+            <LoadingSpinner />
+          )}
         </div>
       </body>
     </html>
@@ -91,7 +106,6 @@ function getTabsForProfile(profile: string) {
       return TabsConvidado
     case "Admin":
       return TabsAdmin
-
     default:
       return []
   }

@@ -1,0 +1,80 @@
+[
+  {
+    "ano": 2023,
+    "mes": 1,
+    "pagamentos": [
+      {
+        "id": 1,
+        "valor": 1500.00,
+        "data": "2023-01-05",
+        "descricao": "Mensalidade Janeiro"
+      },
+      {
+        "id": 2,
+        "valor": 1200.00,
+        "data": "2023-01-20",
+        "descricao": "Curso de Verão"
+      }
+    ]
+  },
+  {
+    "ano": 2023,
+    "mes": 2,
+    "pagamentos": [
+      {
+        "id": 3,
+        "valor": 1500.00,
+        "data": "2023-02-05",
+        "descricao": "Mensalidade Fevereiro"
+      }
+    ]
+  },
+  {
+    "ano": 2023,
+    "mes": 3,
+    "pagamentos": [
+      {
+        "id": 4,
+        "valor": 1500.00,
+        "data": "2023-03-05",
+        "descricao": "Mensalidade Março"
+      },
+      {
+        "id": 5,
+        "valor": 300.00,
+        "data": "2023-03-18",
+        "descricao": "Material Escolar"
+      }
+    ]
+  },
+  {
+    "ano": 2022,
+    "mes": 12,
+    "pagamentos": [
+      {
+        "id": 6,
+        "valor": 1400.00,
+        "data": "2022-12-05",
+        "descricao": "Mensalidade Dezembro"
+      },
+      {
+        "id": 7,
+        "valor": 200.00,
+        "data": "2022-12-15",
+        "descricao": "Taxa de Atividade"
+      }
+    ]
+  },
+  {
+    "ano": 2022,
+    "mes": 11,
+    "pagamentos": [
+      {
+        "id": 8,
+        "valor": 1400.00,
+        "data": "2022-11-05",
+        "descricao": "Mensalidade Novembro"
+      }
+    ]
+  }
+]

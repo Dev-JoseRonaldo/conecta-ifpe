@@ -91,7 +91,9 @@ function getTabsForProfile(profile: string) {
     { name: "Configurações", route: "/financeiro/configuracoes", IconComponent: HiOutlineEnvelope },
   ]
 
-  const TabsAdmin: TabItemProps[] = [{ name: "Início", route: "/admin", IconComponent: HiOutlineEnvelope }]
+  const TabsAdmin: TabItemProps[] = [
+    { name: "Solicitações", route: "/administrador", IconComponent: HiOutlineEnvelope },
+  ]
 
   const TabsConvidado: TabItemProps[] = [{ name: "Início", route: "/convidado", IconComponent: HiOutlineEnvelope }]
 

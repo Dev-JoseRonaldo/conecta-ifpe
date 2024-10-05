@@ -2,21 +2,20 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import LoadingSpinner from "src/components/LoadingSpinner"
 import RootLayout from "../../layout"
 
 export default function PaymentAssistenteSocialPage() {
-  // Verifica se o componente já foi montado
   const [isMounted, setIsMounted] = useState(false)
   const userRole = "Assistente Social"
 
-  // useEffect para setar que o componente foi montado apenas no cliente
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
-  // Renderiza o layout apenas depois que o componente foi montado no cliente
+  // Renderiza o componente de loading até que o componente seja montado
   if (!isMounted) {
-    return null // Ou pode retornar um spinner ou qualquer placeholder
+    return <LoadingSpinner />
   }
 
   return (

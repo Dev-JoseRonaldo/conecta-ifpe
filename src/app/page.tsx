@@ -5,7 +5,7 @@ import axios from "axios"
 import { jwtDecode } from "jwt-decode"
 import Head from "next/head"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import Logo from "src/components/Logo"
@@ -30,6 +30,38 @@ export default function Login() {
     resolver: zodResolver(loginSchema),
   })
 
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      try {
+        const decodedToken: any = jwtDecode(token)
+        const userRole: UserRole = decodedToken?.role
+
+        switch (userRole) {
+          case "ALUNO":
+            router.push("/aluno")
+            break
+          case "ASSISTENTE_SOCIAL":
+            router.push("/assistente-social")
+            break
+          case "FINANCEIRO":
+            router.push("/financeiro")
+            break
+          case "ADMIN":
+            router.push("/administrador")
+            break
+          case "CONVIDADO":
+            router.push("/convidado")
+            break
+          default:
+            throw new Error("Role não reconhecida")
+        }
+      } catch (error) {
+        console.error("Erro ao decodificar o token:", error)
+      }
+    }
+  }, [router])
+
   const onSubmit = async (data: LoginFormData) => {
     setIsLoading(true)
     try {
@@ -38,11 +70,9 @@ export default function Login() {
 
       localStorage.setItem("token", token)
 
-      // Decodificar o token para obter a role
       const decodedToken: any = jwtDecode(token)
       const userRole: UserRole = decodedToken?.role
 
-      // Redirecionar o usuário com base na role
       switch (userRole) {
         case "ALUNO":
           router.push("/aluno")
@@ -113,11 +143,7 @@ export default function Login() {
                 <input type="checkbox" className="form-checkbox size-4 rounded-full" />
                 <span className="ml-2 text-sm font-medium text-[#111827]">Lembrar</span>
               </label>
-              <button
-                type="button"
-                // onClick={() => {/* Lógica para recuperar a senha */}}
-                className="text-sm font-medium text-primary-medium hover:underline"
-              >
+              <button type="button" className="text-sm font-medium text-primary-medium hover:underline">
                 Esqueceu a senha?
               </button>
             </div>

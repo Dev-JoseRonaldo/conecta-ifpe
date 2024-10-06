@@ -1,15 +1,17 @@
 import React, { useState } from "react"
 import { FaUpload } from "react-icons/fa6"
-import mockData from "./smallMock.json"
+import mockData from "./smallPaymentListMock.json"
+import statementListMockData from "./statementListMock.json"
 // import axiosInstance from "../../utils/axiosInstance"
 import Button from "../Button"
 import Table from "../Table"
 
 interface FileUploadProps {
   onFileUpload: (file: File) => void
+  type: "Lista de pagamento" | "Extrato de pagamento"
 }
 
-const FileUpload = ({ onFileUpload }: FileUploadProps) => {
+const FileUpload = ({ onFileUpload, type }: FileUploadProps) => {
   const [progress, setProgress] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const [fileName, setFileName] = useState<string | null>(null)
@@ -64,12 +66,21 @@ const FileUpload = ({ onFileUpload }: FileUploadProps) => {
       //   },
       // });
 
-      const response = { data: mockData }
+      if (type === "Lista de pagamento") {
+        const response = { data: mockData }
 
-      setResponseData(response.data.data)
+        setResponseData(response.data.data)
 
-      console.log("Resposta do servidor:", response.data)
-      console.log("Lista gerada com sucesso!")
+        console.log("Resposta do servidor:", response.data)
+        console.log("Lista gerada com sucesso!")
+      } else if (type === "Extrato de pagamento") {
+        const response = { data: statementListMockData }
+
+        setResponseData(response.data.extrato)
+
+        console.log("Resposta do servidor:", response.data)
+        console.log("Lista gerada com sucesso!")
+      }
     } catch (error) {
       console.error("Erro ao gerar lista:", error)
       console.log("Ocorreu um erro ao enviar o arquivo.")
@@ -84,23 +95,27 @@ const FileUpload = ({ onFileUpload }: FileUploadProps) => {
   const handleDragLeave = () => {
     setIsDragging(false)
   }
-
   return (
     <>
       {responseData ? (
         <>
-          <h1 className="mb-6 self-start text-2xl font-bold">Selecione os alunos que serão contemplados:</h1>
+          <h1 className="mb-6 self-start text-2xl font-bold">
+            {type === "Extrato de pagamento" ? "Extrato de pagamento:" : "Selecione os alunos que serão contemplados:"}
+          </h1>
           <div className="mt-4 max-h-screen max-w-screen-xl overflow-scroll">
             <Table
               IdentifierColumn="Data de criação"
+              type={type}
               alunos={responseData}
               colunasOmitidas={["created at", "process"]}
             />
           </div>
           <div className="flex w-full max-w-xl items-center justify-center gap-10">
-            <Button text="Salvar Rascunho" color="white" size="full" onClick={() => setResponseData(null)} />
+            {type === "Lista de pagamento" && (
+              <Button text="Salvar Rascunho" color="white" size="full" onClick={() => setResponseData(null)} />
+            )}
             <Button
-              text="Confirmar Escolhas"
+              text={type === "Lista de pagamento" ? "Confirmar Escolhas" : "Enviar Extrato de pagamento"}
               color="green"
               size="full"
               onClick={handleGenerateList}
@@ -149,7 +164,7 @@ const FileUpload = ({ onFileUpload }: FileUploadProps) => {
               </div>
             )}
             <Button
-              text="Gerar lista"
+              text={type === "Lista de pagamento" ? "Gerar lista" : "Enviar Extrato"}
               color="green"
               onClick={handleGenerateList}
               disabled={!selectedFile || progress < 100}

@@ -8,7 +8,7 @@ type TableProps = {
   alunos: AlunoData[]
   colunasOmitidas?: string[]
   IdentifierColumn: string
-  type?: "Lista de pagamento" | "Analise de inscriçoes"
+  type?: "Lista de pagamento" | "Analise de inscriçoes" | "Extrato de pagamento"
 }
 
 const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas, type = "Analise de inscriçoes", IdentifierColumn }) => {
@@ -45,9 +45,13 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas, type = "Analise 
       ? Object.keys(alunos[0] as Record<string, unknown>).filter((coluna) => !colunasOmitidas?.includes(coluna))
       : []
 
-  const formatValue = (value: any) => {
+  const formatValue = (value: any, coluna: string) => {
     try {
       const dataRegex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\+\d{2}:\d{2}$/
+
+      if (coluna === "Valor") {
+        return `R$ ${parseFloat(value).toFixed(2).replace(".", ",")}`
+      }
 
       if (typeof value === "string" && dataRegex.test(value)) {
         const data = new Date(value)
@@ -74,6 +78,8 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas, type = "Analise 
     const percent = parseFloat(value)
     if (percent >= 0.75) return "bg-feedback-success"
     if (percent >= 0.25) return "bg-feedback-alert"
+    if (value === "pago") return "bg-feedback-success"
+    if (value === "pendente") return "bg-feedback-alert"
     return "bg-feedback-error"
   }
 
@@ -98,7 +104,7 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas, type = "Analise 
     <table className="table-auto border-collapse border-t border-gray-200 bg-white">
       <thead className="whitespace-nowrap text-[#718096]">
         <tr>
-          <th className="p-8 font-normal">Condição</th>
+          {type !== "Extrato de pagamento" && <th className="p-8 font-normal">Condição</th>}
           {colunas.map((coluna) => (
             <th key={coluna} className="cursor-pointer p-8 font-normal" onClick={() => handleSort(coluna)}>
               {coluna} {ordem.coluna === coluna ? (ordem.direcao === "asc" ? "↑" : "↓") : ""}
@@ -120,7 +126,7 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas, type = "Analise 
                   />
                 </label>
               </td>
-            ) : (
+            ) : type === "Analise de inscriçoes" ? (
               <td className="whitespace-nowrap p-8">
                 <select
                   value={statusAlunos[aluno[IdentifierColumn]]}
@@ -138,19 +144,19 @@ const Table: React.FC<TableProps> = ({ alunos, colunasOmitidas, type = "Analise 
                   <option value="Não Contemplado">Não Contemplado</option>
                 </select>
               </td>
-            )}
+            ) : null}
             {colunas.map((coluna) => (
               <td
                 key={coluna}
                 className={`items p-8 ${(aluno[coluna]?.toString()).length > 80 ? "max-w-16 truncate" : ""}`}
               >
-                {coluna === "Nível de necessidade" ? (
-                  <div className="flex items-center">
+                {coluna === "Nível de necessidade" || coluna === "Status" ? (
+                  <div className="flex items-center capitalize">
                     <span className={`mr-2 size-4 rounded-full ${getBallColor(aluno[coluna])}`}></span>
-                    {formatValue(aluno[coluna])}
+                    {formatValue(aluno[coluna], coluna)}
                   </div>
                 ) : (
-                  formatValue(aluno[coluna])
+                  formatValue(aluno[coluna], coluna)
                 )}
               </td>
             ))}

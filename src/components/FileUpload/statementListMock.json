@@ -1,0 +1,64 @@
+{
+  "extrato": [
+    {
+      "CPF": "792.180.356-30",
+      "Nome": "Rodrigo da Mata",
+      "Valor": 200.00,
+      "Status": "pago"
+    },
+    {
+      "CPF": "725.410.398-32",
+      "Nome": "Yasmin Castro",
+      "Valor": 200.00,
+      "Status": "pendente"
+    },
+    {
+      "CPF": "307.824.569-10",
+      "Nome": "Lívia Aragão",
+      "Valor": 200.00,
+      "Status": "pago"
+    },
+    {
+      "CPF": "784.961.205-11",
+      "Nome": "Antônio Sales",
+      "Valor": 200.00,
+      "Status": "erro"
+    },
+    {
+      "CPF": "253.978.064-47",
+      "Nome": "Arthur Santos",
+      "Valor": 200.00,
+      "Status": "pendente"
+    },
+    {
+      "CPF": "243.679.801-03",
+      "Nome": "André da Mata",
+      "Valor": 200.00,
+      "Status": "pago"
+    },
+    {
+      "CPF": "928.461.753-73",
+      "Nome": "Igor Pires",
+      "Valor": 200.00,
+      "Status": "erro"
+    },
+    {
+      "CPF": "691.742.305-06",
+      "Nome": "Henrique Carvalho",
+      "Valor": 200.00,
+      "Status": "pago"
+    },
+    {
+      "CPF": "708.934.652-83",
+      "Nome": "Kaique Nunes",
+      "Valor": 200.00,
+      "Status": "pendente"
+    },
+    {
+      "CPF": "380.567.941-66",
+      "Nome": "Dr. Kaique Alves",
+      "Valor": 200.00,
+      "Status": "erro"
+    }
+  ]
+}

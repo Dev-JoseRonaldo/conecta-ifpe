@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { FaHome, FaUsersCog } from "react-icons/fa"
 import { HiOutlineEnvelope } from "react-icons/hi2"
 import { HiChatBubbleLeftRight } from "react-icons/hi2"
+import { IoMdCloudUpload } from "react-icons/io"
 import { MdPaid } from "react-icons/md"
 import { RiSettings3Fill } from "react-icons/ri"
 
@@ -86,7 +87,7 @@ function getTabsForProfile(profile: string) {
   const TabsAluno: TabItemProps[] = [{ name: "Início", route: "/aluno", IconComponent: FaHome }]
 
   const TabsFinanceiro: TabItemProps[] = [
-    { name: "Dashboard", route: "/financeiro", IconComponent: HiOutlineEnvelope },
+    { name: "Inserir Extrato", route: "/financeiro", IconComponent: IoMdCloudUpload },
     { name: "Gestão de Usuários", route: "/financeiro/usuarios", IconComponent: HiOutlineEnvelope },
     { name: "Configurações", route: "/financeiro/configuracoes", IconComponent: HiOutlineEnvelope },
   ]

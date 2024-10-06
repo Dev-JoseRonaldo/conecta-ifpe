@@ -1,5 +1,6 @@
+// src/components/Sidebar/Sidebar.test.tsx
 import { render, screen } from "@testing-library/react"
-
+import { useRouter } from "next/navigation" // Importando useRouter do next/navigation
 import Logo from "../Logo"
 import { TabItemProps } from "../TabItem"
 import { Sidebar } from "."
@@ -16,6 +17,11 @@ jest.mock("../TabItem", () => ({
   TabItem: jest.fn(({ name }: TabItemProps) => <div>{name}</div>),
 }))
 
+// Mock do useRouter
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}))
+
 describe("Sidebar Component", () => {
   const tabs: TabItemProps[] = [
     { name: "Dashboard", route: "/dashboard", IconComponent: jest.fn() },
@@ -23,6 +29,9 @@ describe("Sidebar Component", () => {
   ]
 
   test("renders the Sidebar with logo and tabs", () => {
+    const pushMock = jest.fn()
+    ;(useRouter as jest.Mock).mockReturnValue({ push: pushMock }) // Mockando o método push
+
     render(<Sidebar tabs={tabs} isCollapsed={false} />)
 
     // Verifica se o logo foi renderizado
@@ -35,6 +44,9 @@ describe("Sidebar Component", () => {
   })
 
   test("renders the Sidebar with collapsed state", () => {
+    const pushMock = jest.fn()
+    ;(useRouter as jest.Mock).mockReturnValue({ push: pushMock }) // Mockando o método push
+
     render(<Sidebar tabs={tabs} isCollapsed={true} />)
 
     // Verifica se o logo está com o tamanho pequeno (collapsed)
@@ -46,6 +58,9 @@ describe("Sidebar Component", () => {
   })
 
   test("does not render tabs when none are provided", () => {
+    const pushMock = jest.fn()
+    ;(useRouter as jest.Mock).mockReturnValue({ push: pushMock }) // Mockando o método push
+
     render(<Sidebar tabs={[]} isCollapsed={false} />)
 
     // Verifica se os TabItems não são renderizados

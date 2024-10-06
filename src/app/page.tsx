@@ -1,8 +1,9 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import axios from "axios"
+import { jwtDecode } from "jwt-decode"
 import Head from "next/head"
-
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -15,6 +16,7 @@ const loginSchema = z.object({
 })
 
 type LoginFormData = z.infer<typeof loginSchema>
+type UserRole = "ALUNO" | "ASSISTENTE_SOCIAL" | "FINANCEIRO" | "ADMIN" | "CONVIDADO"
 
 export default function Login() {
   const router = useRouter()
@@ -28,16 +30,43 @@ export default function Login() {
     resolver: zodResolver(loginSchema),
   })
 
-  const onSubmit = (data: LoginFormData) => {
+  const onSubmit = async (data: LoginFormData) => {
     setIsLoading(true)
-    // Chamar a API de login
-    console.log(data)
+    try {
+      const response = await axios.post("http://localhost:3000/auth/login", data)
+      const token = response.data.access_token
 
-    // Simulando sucesso
-    setTimeout(() => {
+      localStorage.setItem("token", token)
+
+      // Decodificar o token para obter a role
+      const decodedToken: any = jwtDecode(token)
+      const userRole: UserRole = decodedToken?.role
+
+      // Redirecionar o usuário com base na role
+      switch (userRole) {
+        case "ALUNO":
+          router.push("/aluno")
+          break
+        case "ASSISTENTE_SOCIAL":
+          router.push("/assistente-social")
+          break
+        case "FINANCEIRO":
+          router.push("/financeiro")
+          break
+        case "ADMIN":
+          router.push("/administrador")
+          break
+        case "CONVIDADO":
+          router.push("/convidado")
+          break
+        default:
+          throw new Error("Role não reconhecida")
+      }
+    } catch (error) {
+      console.error("Erro ao fazer login:", error)
+    } finally {
       setIsLoading(false)
-      router.push("/assistente-social")
-    }, 2000)
+    }
   }
 
   return (

@@ -10,13 +10,13 @@ describe("FileUpload component", () => {
   })
 
   test("renders correctly", () => {
-    render(<FileUpload onFileUpload={mockOnFileUpload} />)
+    render(<FileUpload type="Lista de pagamento" onFileUpload={mockOnFileUpload} />)
     const uploadText = screen.getByText(/arraste seu arquivo aqui ou procure um arquivo para fazer upload/i)
     expect(uploadText).toBeInTheDocument()
   })
 
   test("calls onFileUpload when a file is selected", () => {
-    render(<FileUpload onFileUpload={mockOnFileUpload} />)
+    render(<FileUpload type="Lista de pagamento" onFileUpload={mockOnFileUpload} />)
     const file = new File(["content"], "test.csv", { type: "text/csv" })
     const input = screen.getByLabelText(/arraste seu arquivo aqui ou procure um arquivo para fazer upload/i)
 
@@ -27,7 +27,7 @@ describe("FileUpload component", () => {
   })
 
   test("does not call onFileUpload when no files are selected", () => {
-    render(<FileUpload onFileUpload={mockOnFileUpload} />)
+    render(<FileUpload type="Lista de pagamento" onFileUpload={mockOnFileUpload} />)
     const input = screen.getByLabelText(/arraste seu arquivo aqui ou procure um arquivo para fazer upload/i)
 
     fireEvent.change(input, { target: { files: [] } })
@@ -36,7 +36,7 @@ describe("FileUpload component", () => {
   })
 
   test("calls onFileUpload when a file is dropped", () => {
-    render(<FileUpload onFileUpload={mockOnFileUpload} />)
+    render(<FileUpload type="Lista de pagamento" onFileUpload={mockOnFileUpload} />)
     const file = new File(["content"], "test.csv", { type: "text/csv" })
     const dropZone = screen.getByText(/arraste seu arquivo aqui ou procure um arquivo para fazer upload/i)
 
@@ -52,7 +52,7 @@ describe("FileUpload component", () => {
   })
 
   test("shows progress and filename after file upload", () => {
-    render(<FileUpload onFileUpload={mockOnFileUpload} />)
+    render(<FileUpload type="Lista de pagamento" onFileUpload={mockOnFileUpload} />)
     const file = new File(["content"], "test.csv", { type: "text/csv" })
     const input = screen.getByLabelText(/arraste seu arquivo aqui ou procure um arquivo para fazer upload/i)
 
@@ -63,7 +63,7 @@ describe("FileUpload component", () => {
   })
 
   test("button becomes enabled after file upload", () => {
-    render(<FileUpload onFileUpload={mockOnFileUpload} />)
+    render(<FileUpload type="Lista de pagamento" onFileUpload={mockOnFileUpload} />)
     const file = new File(["content"], "test.csv", { type: "text/csv" })
     const input = screen.getByLabelText(/arraste seu arquivo aqui ou procure um arquivo para fazer upload/i)
 

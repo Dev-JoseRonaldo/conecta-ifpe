@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import mockData from "./smallMock.json" // Importando o mock de dados
+import mockData from "./smallPaymentListMock.json" // Importando o mock de dados
 import FileUpload from "."
 
 const meta: Meta<typeof FileUpload> = {

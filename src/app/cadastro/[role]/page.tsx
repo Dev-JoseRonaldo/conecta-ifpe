@@ -63,13 +63,32 @@ export default function Cadastro() {
   }, [pathname])
 
   const onSubmit = async (data: CadastroFormData) => {
+    // Extrai o role do pathname
+    const rolePath = pathname.split("/cadastro/")[1]
+    const desiredRole = rolePath ? rolePath.toUpperCase().replace(/-/g, "_") : undefined
+
+    // Cria um objeto para enviar ao backend
+    const payload = {
+      username: data.login || undefined,
+      password: data.senha || undefined,
+      role: "CONVIDADO",
+      desiredRole: desiredRole,
+      siape: data.matricula || null,
+      fullName: data.nome || undefined,
+      email: data.email || undefined,
+      campus: data.campus || undefined,
+      phone: data.telefone || undefined,
+      birthDate: new Date(data.dataNascimento) || new Date("Invalid Date"),
+      cpf: data.cpf || undefined,
+    }
+
     try {
-      const response = await fetch("/api/cadastro", {
+      const response = await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload), // Envia o objeto modificado
       })
 
       if (response.ok) {

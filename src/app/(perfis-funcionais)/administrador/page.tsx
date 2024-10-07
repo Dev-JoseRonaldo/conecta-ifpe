@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import axios from "axios"
@@ -29,8 +30,12 @@ export default function RequestsAdminPage() {
   const userRole = "Admin"
 
   useEffect(() => {
+    let isMounted = true
     setIsMounted(true)
     fetchData()
+    return () => {
+      isMounted = false // Cleanup para evitar atualizações se o componente for desmontado
+    }
   }, [])
 
   // Mova a função fetchData para fora do useEffect

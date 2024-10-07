@@ -1,82 +1,123 @@
-/* eslint-disable jest/no-conditional-expect */
 import { fireEvent, render, screen } from "@testing-library/react"
 import React from "react"
-import Table from "." // Ajuste o caminho conforme a estrutura do seu projeto
+import Table from "."
 
 describe("Table Component", () => {
   const alunosMock = [
     {
-      cpf: "12345678901",
+      "Data de criação": "2024-01-01 12:00:00.000000+00:00",
       Nome: "Aluno 1",
-      Email: "aluno1@example.com",
+      Nota: 0.85,
     },
     {
-      cpf: "09876543210",
+      "Data de criação": "2024-01-02 12:00:00.000000+00:00",
       Nome: "Aluno 2",
-      Email: "aluno2@example.com",
+      Nota: 0.65,
     },
   ]
 
-  test("renders table with correct headers", () => {
-    render(<Table alunos={alunosMock} IdentifierColumn="cpf" type="Lista de pagamento" />)
+  test("should render the table with correct headers", () => {
+    render(<Table IdentifierColumn="Data de criação" alunos={alunosMock} />)
 
     expect(screen.getByText("Condição")).toBeInTheDocument()
     expect(screen.getByText("Nome")).toBeInTheDocument()
-    expect(screen.getByText("Email")).toBeInTheDocument()
+    expect(screen.getByText("Nota")).toBeInTheDocument()
   })
 
-  test("renders the correct number of rows", () => {
-    render(<Table alunos={alunosMock} IdentifierColumn="cpf" type="Lista de pagamento" />)
+  test("should render correct number of rows", () => {
+    render(<Table IdentifierColumn="Data de criação" alunos={alunosMock} />)
 
     const rows = screen.getAllByRole("row")
-    expect(rows).toHaveLength(alunosMock.length + 1) // +1 para o header
+    expect(rows).toHaveLength(alunosMock.length + 1)
   })
 
-  test("calls onCheckboxSelection when a checkbox is clicked", () => {
-    const mockOnCheckboxSelection = jest.fn()
-    render(
-      <Table
-        alunos={alunosMock}
-        IdentifierColumn="cpf"
-        type="Lista de pagamento"
-        onCheckboxSelection={mockOnCheckboxSelection}
-      />
-    )
+  test("should change status when selected", () => {
+    render(<Table IdentifierColumn="Data de criação" alunos={alunosMock} />)
 
-    const checkbox = screen.getAllByRole("checkbox")[0]
+    const select = screen.getAllByRole("combobox")[0]
 
-    if (checkbox) {
-      fireEvent.click(checkbox)
+    if (!select) {
+      throw new Error("Select not found")
     }
 
-    expect(mockOnCheckboxSelection).toHaveBeenCalledWith(["12345678901"])
+    if (select) {
+      if (select) {
+        fireEvent.change(select, { target: { value: "Contemplado" } })
+      }
+    }
+
+    expect(select).toHaveValue("Contemplado")
   })
 
-  test("toggles checkbox state when clicked", () => {
-    render(<Table alunos={alunosMock} IdentifierColumn="cpf" type="Lista de pagamento" />)
+  test("should format date correctly", () => {
+    render(<Table IdentifierColumn="Data de criação" alunos={alunosMock} />)
+
+    const formattedDateRegex = /01\/01\/2024 \d{2}:\d{2}:\d{2}/
+    expect(screen.getByText(formattedDateRegex)).toBeInTheDocument()
+  })
+
+  test("should omit specified columns", () => {
+    render(<Table IdentifierColumn="Data de criação" alunos={alunosMock} colunasOmitidas={["Nome"]} />)
+
+    expect(screen.queryByText("Nome")).not.toBeInTheDocument()
+    expect(screen.getByText("Nota")).toBeInTheDocument()
+  })
+
+  test("should show correct background color based on status", () => {
+    render(<Table IdentifierColumn="Data de criação" alunos={alunosMock} />)
+
+    const select = screen.getAllByRole("combobox")[0]
+
+    if (!select) {
+      throw new Error("Select not found")
+    }
+
+    fireEvent.change(select, { target: { value: "Contemplado" } })
+    expect(select).toHaveClass("bg-primary-medium")
+
+    fireEvent.change(select, { target: { value: "Não Contemplado" } })
+    expect(select).toHaveClass("bg-feedback-error")
+  })
+
+  test("should sort by column when header is clicked", () => {
+    render(<Table IdentifierColumn="Data de criação" alunos={alunosMock} />)
+
+    const headerNome = screen.getByText("Nome")
+    fireEvent.click(headerNome)
+
+    const sortedRows = screen.getAllByRole("row").slice(1) // Exclude header row
+    expect(sortedRows[0]).toHaveTextContent("Aluno 1")
+    expect(sortedRows[1]).toHaveTextContent("Aluno 2")
+
+    // Click again to reverse sort
+    fireEvent.click(headerNome)
+    const reverseSortedRows = screen.getAllByRole("row").slice(1)
+    expect(reverseSortedRows[0]).toHaveTextContent("Aluno 2")
+    expect(reverseSortedRows[1]).toHaveTextContent("Aluno 1")
+  })
+
+  test("should check and uncheck checkboxes correctly", () => {
+    render(<Table IdentifierColumn="Data de criação" alunos={alunosMock} type="Lista de pagamento" />)
 
     const checkbox = screen.getAllByRole("checkbox")[0]
+
+    if (!checkbox) {
+      throw new Error("Checkbox not found")
+    }
+
+    // Check the checkbox
+    fireEvent.click(checkbox)
+    expect(checkbox).toBeChecked()
+
+    // Uncheck the checkbox
+    fireEvent.click(checkbox)
     expect(checkbox).not.toBeChecked()
-
-    if (checkbox) {
-      fireEvent.click(checkbox)
-      expect(checkbox).toBeChecked()
-
-      fireEvent.click(checkbox)
-      expect(checkbox).not.toBeChecked()
-    }
   })
 
-  test("renders without omitting columns", () => {
-    render(<Table alunos={alunosMock} IdentifierColumn="cpf" type="Lista de pagamento" colunasOmitidas={[]} />)
+  test("should format number as percentage correctly", () => {
+    render(<Table IdentifierColumn="Data de criação" alunos={alunosMock} />)
 
-    expect(screen.getByText("Nome")).toBeInTheDocument()
-    expect(screen.getByText("Email")).toBeInTheDocument()
-  })
-
-  test("omits specified columns", () => {
-    render(<Table alunos={alunosMock} IdentifierColumn="cpf" type="Lista de pagamento" colunasOmitidas={["Email"]} />)
-
-    expect(screen.queryByText("Email")).not.toBeInTheDocument()
+    expect(screen.getByText("85.00%")).toBeInTheDocument()
+    expect(screen.getByText("65.00%")).toBeInTheDocument()
   })
 })

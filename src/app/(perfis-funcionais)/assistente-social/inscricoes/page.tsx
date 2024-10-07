@@ -29,7 +29,7 @@ export default function InscriptionsAssistenteSocialPage() {
     <RootLayout userRole={userRole}>
       <div className="rounded-lg bg-white p-8 px-36 shadow-md">
         <div className="flex flex-col items-center space-y-4">
-          <FileUpload type="Lista de pagamento" onFileUpload={handleFileUpload} />
+          <FileUpload type="Analise de inscriçoes" onFileUpload={handleFileUpload} />
         </div>
       </div>
     </RootLayout>

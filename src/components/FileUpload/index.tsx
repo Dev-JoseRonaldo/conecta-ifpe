@@ -8,7 +8,7 @@ import Table from "../Table"
 
 interface FileUploadProps {
   onFileUpload: (file: File) => void
-  type: "Lista de pagamento" | "Extrato de pagamento"
+  type: "Lista de pagamento" | "Analise de inscriçoes" | "Extrato de pagamento"
 }
 
 const FileUpload = ({ onFileUpload, type }: FileUploadProps) => {
@@ -66,7 +66,7 @@ const FileUpload = ({ onFileUpload, type }: FileUploadProps) => {
       //   },
       // });
 
-      if (type === "Lista de pagamento") {
+      if (type === "Lista de pagamento" || type === "Analise de inscriçoes") {
         const response = { data: mockData }
 
         setResponseData(response.data.data)
@@ -111,11 +111,11 @@ const FileUpload = ({ onFileUpload, type }: FileUploadProps) => {
             />
           </div>
           <div className="flex w-full max-w-xl items-center justify-center gap-10">
-            {type === "Lista de pagamento" && (
+            {type === "Analise de inscriçoes" && (
               <Button text="Salvar Rascunho" color="white" size="full" onClick={() => setResponseData(null)} />
             )}
             <Button
-              text={type === "Lista de pagamento" ? "Confirmar Escolhas" : "Enviar Extrato de pagamento"}
+              text={type === "Analise de inscriçoes" ? "Confirmar Escolhas" : "Enviar Extrato de pagamento"}
               color="green"
               size="full"
               onClick={handleGenerateList}

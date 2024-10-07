@@ -92,7 +92,7 @@ export default function Cadastro() {
       })
 
       if (response.ok) {
-        router.push("/")
+        router.push("/convidado")
       } else {
         console.error("Erro ao enviar dados:", response.statusText)
       }

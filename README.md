@@ -7,7 +7,7 @@
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/IF977/if977-project-standards.svg)](https://github.com/Dev-JoseRonaldo/conecta-ifpe/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-## Descrição
+## 📋 Descrição
 
 O projeto consiste no desenvolvimento de um sistema integrado para a gestão financeira do programa de assistência estudantil de alunos do Instituto Federal de Pernambuco (IFPE), com funcionalidades para auxiliar nesse processo provendo análise de aptidão dos alunos inscritos, acompanhamento de pagamentos de bolsas estudantis e notificações automáticas, conectando alunos, setor financeiro e setor de assistência social em um único sistema. A principal funcionalidade será  a integração entre esses três atores em um sistema que possibilita gerenciar algumas etapas estratégicas do fluxo de assistência estudantil e informar, de forma transparente e acessível a todos os atores, o acompanhamento financeiro relacionado à concessão de bolsas estudantis. Atualmente em torno de 60% a 65% dos alunos do IFPE são identificados como vulneráveis econômicos e sociais. 
 
@@ -19,7 +19,20 @@ Com base nisso, o projeto visa resolvê-los por meio de uma solução que aprese
 
 Com essa abordagem, o projeto se alinha na melhora da experiência dos alunos que necessitam das bolsas e também na eficiência administrativa.
 
-## Início Rápido
+## 🔗 Repositórios e Links complementares:
+Atualmente, esse projeto é composto por 4 repositórios, cada um com sua responsabilidade:
+
+- Conecta IFPE - Frontend: É esse repositório, responsável pela interface do usuário e pela documentação geral do projeto.
+- [Conecta IFPE - Backend](https://github.com/Dev-JoseRonaldo/conecta-ifpe-backend): API Gateway reponsável pela centralização, controle e monitoramento das requisições. Além de ser responsável pelo gerenciamento de Autenticação e Autorização.
+- [Conecta IFPE - Rank IA](https://github.com/luiz-linkezio/conecta-ifpe-rank-IA): Microserviço responsável por fazer o ranqueamento dos alunos com base em dados históricos. 
+
+- [Conecta IFPE - Financeiro](https://github.com/Dev-JoseRonaldo/conecta-ifpe-financeiro): Microserviço responsável por gerar e gerenciar os pagamentos das bolsas estudantis.
+
+Além disso, temos o [Figma](https://www.figma.com/design/Z9I5iAE3OyS2H4aZQQghHS/IFPE---Projeto-Eng.-de-Software?node-id=78-964&t=STRrV4rOjhQWwnQc-1) com o design do projeto.
+
+
+
+## ⚡️ Início Rápido
 
 Para iniciar o projeto, siga estes passos:
 
@@ -50,7 +63,7 @@ brew install pre-commit
 pre-commit install -t commit-msg
 ```
 
-### Pré-requisitos
+### 💻 Pré-requisitos
 
 Para rodar o projeto você precisará dos seguintes pré-requisitos de instalação:
 
@@ -62,11 +75,11 @@ Para rodar o projeto você precisará dos seguintes pré-requisitos de instalaç
 
 4. **Docker (opcional, mas recomendado)**: Se você for usar Kubernetes, o [Docker](https://www.docker.com/) será útil para criar e gerenciar contêineres durante o desenvolvimento e teste.
 
-## Documentação
+## 📜 Documentação
 
 Toda a documentação necessária para o projeto, incluindo guias de instalação, configuração, e uso das ferramentas, pode ser encontrada na pasta [docs](/docs/) localizada na raiz do projeto. Certifique-se de revisar esses documentos para obter orientações detalhadas sobre o desenvolvimento e manutenção do projeto.
 
-## Como Contribuir
+## 🤝 Como Contribuir
 
 Contribuições são sempre bem-vindas, veja como você pode ajudar:
 
@@ -79,17 +92,29 @@ Contribuições são sempre bem-vindas, veja como você pode ajudar:
 
 Leia através do [CONTRIBUTING](CONTRIBUTING.md)
 
-## Licença
+## 🚨 Licença
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
-## Estado do Projeto
+## 🌱 Estado do Projeto
 
 Este projeto está em desenvolvimento ativo. Você pode esperar mudanças frequentes e atualizações.
 
 ## 💼 Créditos
 <br>
 
-| [<img src="https://github.com/luiz-linkezio.png" width=115><br><sub>Luiz Henrique</sub><br>](https://github.com/luiz-linkezio) <sub>AI Engineer / Pentester</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/luiz-henrique-brito-4065761b0/)</sub><br> | [<img src="https://github.com/dev-joseronaldo.png" width=115><br><sub>José Ronaldo</sub><br>](https://github.com/Dev-JoseRonaldo) <sub>FullStack Developer</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/josé-ronaldo-973a26236)</sub><br> | [<img src="https://github.com/Cawezinn.png" width=115><br><sub>Cauê Marinho</sub><br>](https://github.com/Cawezinn) <sub>Backend Developer</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/cau%C3%AAsouza/)</sub><br> | [<img src="https://github.com/karenvcsa.png" width=115><br><sub>Karen Verçosa</sub><br>](https://github.com/karenvcsa) <sub>UI/UX Design</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/karenvcsa/)</sub><br> | [<img src="https://github.com/vitoriabtriz.png" width=115><br><sub>Vitória Beatriz</sub><br>](https://github.com/vitoriabtriz) <sub>UI/UX Design</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/vitoriabtriz/)</sub><br> |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://github.com/luiz-linkezio.png" width=115><br><sub>Luiz Henrique</sub><br>](https://github.com/luiz-linkezio) <sub>AI Engineer / Pentester</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/luiz-henrique-brito-4065761b0/)</sub><br> | [<img src="https://github.com/dev-joseronaldo.png" width=115><br><sub>José Ronaldo</sub><br>](https://github.com/Dev-JoseRonaldo) <sub>FullStack Developer</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/josé-ronaldo-973a26236)</sub><br> | [<img src="https://github.com/karenvcsa.png" width=115><br><sub>Karen Verçosa</sub><br>](https://github.com/karenvcsa) <sub>UI/UX Design</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/karenvcsa/)</sub><br> | [<img src="https://github.com/vitoriabtriz.png" width=115><br><sub>Vitória Beatriz</sub><br>](https://github.com/vitoriabtriz) <sub>UI/UX Design</sub><br> <sub>[Linkedin](https://www.linkedin.com/in/vitoriabtriz/)</sub><br> |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 ---
+
+<br>
+
+## 📷 Screenshots
+
+![Login](/.github/images/screenshot-1.png)
+![Cadastro](/.github/images/screenshot-2.png)
+![Cadastro Aluno](/.github/images/screenshot-3.png)
+![Pagamentos](/.github/images/screenshot-4.png)
+![Inscrições](/.github/images/screenshot-5.png)
+![Aluno](/.github/images/screenshot-6.png)
+![Financeiro](/.github/images/screenshot-7.png)
